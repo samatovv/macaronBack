@@ -56,6 +56,9 @@ app.use('/api/sets', setsRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api', forgotPasswordRoutes);
 
+
+
+
 app.get('/', (req, res) => {
     res.send('Сервер работает ✅');
 });
