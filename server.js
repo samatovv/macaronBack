@@ -56,7 +56,6 @@ app.use('/api/sets', setsRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api', forgotPasswordRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Сервер работает на http://localhost:${PORT}`);
-    console.log(`Документация Swagger доступна по пути: http://localhost:${PORT}/api-docs`);
 });
