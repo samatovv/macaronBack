@@ -56,6 +56,10 @@ app.use('/api/sets', setsRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api', forgotPasswordRoutes);
 
+app.get('/', (req, res) => {
+    res.send('Сервер работает ✅');
+});
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Сервер работает на http://localhost:${PORT}`);
 });
