@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: "Macaron API"
+  version: "1.0.0"
+  description: "API with JWT authentication"
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: [] # Применяем BearerAuth ко всем защищенным маршрутам
+
+paths:
+  /api/promotions:
+    post:
+      summary: "Create a new promotion"
+      security:
+        - BearerAuth: []  # Указываем, что для этого маршрута нужен токен
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                short_description:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                discount_price:
+                  type: number
+                images:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: "Promotion created successfully"
+        '401':
+          description: "Unauthorized, invalid token"
+  /api/news:
+    post:
+      summary: "Create a new news"
+      security:
+        - BearerAuth: []  # Указываем, что для этого маршрута нужен токен
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                short_description:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                discount_price:
+                  type: number
+                images:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: "News created successfully"
+        '401':
+          description: "Unauthorized, invalid token"
