@@ -20,5 +20,8 @@
     "pg": "^8.14.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "node-pg-migrate": "^7.9.1"
   }
 }
