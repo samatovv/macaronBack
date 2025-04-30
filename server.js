@@ -6,6 +6,7 @@ const PORT = 3000;
 const morgan = require('morgan');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const cors = require('cors'); // Добавлен импорт cors
 
 const authRoutes = require('./routes/auth');
 const promotionRoutes = require('./routes/promotion');
@@ -13,6 +14,12 @@ const newsRoutes = require('./routes/news');
 const setsRoutes = require('./routes/sets');
 const profileRoutes = require('./routes/profile');
 const forgotPasswordRoutes = require('./routes/forgotPassword');
+
+// Размещение CORS middleware перед роутами
+app.use(cors({
+    origin: ['http://localhost:3000', 'http://localhost:5173'],  // Разрешение для нескольких источников
+    credentials: true,
+}));
 
 app.use(express.json());
 app.use(morgan('dev'));
@@ -44,7 +51,6 @@ const swaggerOptions = {
     apis: ['./routes/*.js'], // Указываем путь к файлам с комментариями для Swagger
 };
 
-
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -56,9 +62,6 @@ app.use('/api/sets', setsRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api', forgotPasswordRoutes);
 
-
-
-
 app.get('/', (req, res) => {
     res.send('Сервер работает ✅');
 });
@@ -66,8 +69,3 @@ app.get('/', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Сервер работает на http://localhost:${PORT}`);
 });
-
-app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:5173'],  // Разрешение для нескольких источников
-    credentials: true,
-}));  
