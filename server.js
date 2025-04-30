@@ -66,3 +66,8 @@ app.get('/', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Сервер работает на http://localhost:${PORT}`);
 });
+
+app.use(cors({
+    origin: ['http://localhost:3000', 'http://localhost:5173'],  // Разрешение для нескольких источников
+    credentials: true,
+}));  
