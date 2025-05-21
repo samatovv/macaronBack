@@ -198,36 +198,39 @@ module.exports = router;
  *     requestBody:
  *       required: true
  *       content:
- *          multipart/form-data:
+ *         multipart/form-data:
  *           schema:
- *           type: object
- *           required:
+ *             type: object
+ *             required:
  *               - name
  *               - short_description
  *               - description
  *               - price
  *               - discount_price
  *               - images
- *           properties:
+ *             properties:
  *               name:
- *                  type: string
+ *                 type: string
  *               short_description:
- *                  type: string
+ *                 type: string
  *               description:
- *                  type: string
+ *                 type: string
  *               price:
- *                  type: number
+ *                 type: number
  *               discount_price:
- *                  type: number
+ *                 type: number
  *               images:
- *                  type: string
- *               format: binary
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
  *     responses:
  *       200:
  *         description: Новости обновлена
  *       500:
  *         description: Ошибка сервера
  */
+
 
 /**
  * @swagger

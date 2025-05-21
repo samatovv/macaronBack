@@ -8,7 +8,7 @@ const fs = require('fs');
 const authenticateToken = require('../middleware/authenticateToken');
 
 // Создаем папку для загрузок, если не существует
-const uploadDir = path.join(__dirname, '../uploads/promotions');
+const uploadDir = path.join(__dirname, '../uploads/sets');
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -239,16 +239,16 @@ module.exports = router;
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID акции
+ *         description: ID набора
  *         schema:
  *           type: integer
  *     requestBody:
  *       required: true
  *       content:
- *          multipart/form-data:
+ *         multipart/form-data:
  *           schema:
- *           type: object
- *           required:
+ *             type: object
+ *             required:
  *               - name
  *               - short_description
  *               - description
@@ -258,26 +258,26 @@ module.exports = router;
  *               - ready
  *               - wedding
  *               - images
- *           properties:
+ *             properties:
  *               name:
- *                  type: string
+ *                 type: string
  *               short_description:
- *                  type: string
+ *                 type: string
  *               description:
- *                  type: string
+ *                 type: string
  *               price:
- *                  type: number
+ *                 type: number
  *               discount_price:
- *                  type: number
+ *                 type: number
  *               popular:
- *                  type: boolean
+ *                 type: boolean
  *               ready:
- *                  type: boolean
- *               wedding:   
- *                  type: boolean
+ *                 type: boolean
+ *               wedding:
+ *                 type: boolean
  *               images:
- *                  type: string
- *               format: binary
+ *                 type: string
+ *                 format: binary
  *     responses:
  *       200:
  *         description: Набор обновлена
